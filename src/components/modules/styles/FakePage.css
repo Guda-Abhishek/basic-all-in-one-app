@@ -1,0 +1,14 @@
+.fake-container {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 51px;
+    width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+  
+  .fake-container ul {
+    list-style: circle;
+    padding-left: 1.5rem;
+  }
+  

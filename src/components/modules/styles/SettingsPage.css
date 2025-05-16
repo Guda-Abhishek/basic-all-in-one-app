@@ -1,0 +1,19 @@
+.settings-container {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 51px;
+    width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+  
+  .settings-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .settings-container li {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+  

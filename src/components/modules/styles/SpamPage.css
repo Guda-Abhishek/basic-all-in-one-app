@@ -1,0 +1,17 @@
+.spam-container {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 51px;
+    width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+  
+  .spam-container p {
+    margin: 0.5rem 0;
+  }
+  
+  .spam-container ul {
+    padding-left: 1rem;
+  }
+  
