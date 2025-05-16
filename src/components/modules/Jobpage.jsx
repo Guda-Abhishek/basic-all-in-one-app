@@ -1,6 +1,28 @@
 import React, { useState } from 'react';
 import './styles/Jobpage.css';
 
+const officialLinks = {
+  'Delhi': {
+    Railway: 'https://indianrailways.gov.in/recruitment',
+    Police: 'https://delhipolice.nic.in/recruitment',
+    Teacher: 'https://education.delhi.gov.in/teacher-recruitment',
+    GroupExams: 'https://delhigroup.exams.gov.in',
+  },
+  'Punjab': {
+    Railway: 'https://indianrailways.gov.in/recruitment',
+    Police: 'https://punjabpolice.gov.in/jobs',
+    Teacher: 'https://education.punjab.gov.in/teacher-jobs',
+    GroupExams: 'https://punjabpsc.gov.in',
+  },
+  'Central': {
+    Railway: 'https://indianrailways.gov.in/recruitment',
+    Police: 'https://mha.gov.in/police-jobs',
+    Teacher: 'https://teindia.gov.in/teacher-recruitment',
+    GroupExams: 'https://upsc.gov.in',
+  }
+  // add other states and UTs similarly
+};
+
 const allJobs = [
   {
     id: 1,
@@ -9,6 +31,7 @@ const allJobs = [
     type: 'Central',
     ministry: 'Ministry of Railways',
     industry: 'Engineering',
+    category: 'Railway',
     lastDate: '2025-05-20',
   },
   {
@@ -18,6 +41,7 @@ const allJobs = [
     type: 'State',
     ministry: 'Ministry of Agriculture',
     industry: 'Farming',
+    category: 'GroupExams',
     lastDate: '2025-05-22',
   },
   {
@@ -27,6 +51,7 @@ const allJobs = [
     type: 'State',
     ministry: 'Ministry of IT',
     industry: 'Technology',
+    category: 'Teacher',
     lastDate: '2025-06-01',
   },
   {
@@ -36,6 +61,7 @@ const allJobs = [
     type: 'Central',
     ministry: 'Ministry of Finance',
     industry: 'Administration',
+    category: 'GroupExams',
     lastDate: '2025-05-18',
   },
 ];
@@ -54,65 +80,15 @@ const Jobpage = () => {
     'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura',
     'Uttar Pradesh', 'Uttarakhand', 'West Bengal', 'Delhi' // UT
   ];
+
   const ministries = [
-    'Ministry of Home Affairs',
-    'Ministry of Finance',
-    'Ministry of External Affairs',
-    'Ministry of Defence',
-    'Ministry of Education',
-    'Ministry of Railways',
-    'Ministry of Agriculture & Farmers Welfare',
-    'Ministry of Health and Family Welfare',
-    'Ministry of Labour and Employment',
-    'Ministry of Law and Justice',
-    'Ministry of Road Transport and Highways',
-    'Ministry of Environment, Forest and Climate Change',
-    'Ministry of Housing and Urban Affairs',
-    'Ministry of Women and Child Development',
-    'Ministry of Information and Broadcasting',
-    'Ministry of Electronics and Information Technology',
-    'Ministry of Commerce and Industry',
-    'Ministry of Power',
-    'Ministry of Petroleum and Natural Gas',
-    'Ministry of Skill Development and Entrepreneurship',
-    'Ministry of Tourism',
-    'Ministry of Tribal Affairs',
-    'Ministry of Youth Affairs and Sports',
-    'Ministry of Science and Technology',
-    'Ministry of Heavy Industries',
-    'Ministry of Social Justice and Empowerment',
-    'Ministry of Micro, Small and Medium Enterprises'
-  ];
-  const industries = [
-    'Agriculture',
-    'Automobile',
-    'Banking and Finance',
-    'Biotechnology',
-    'Construction',
-    'Education and E-learning',
-    'E-commerce',
-    'Engineering',
-    'Entertainment and Media',
-    'FMCG (Fast-Moving Consumer Goods)',
-    'Healthcare and Pharmaceuticals',
-    'Hospitality and Tourism',
-    'Information Technology and Services',
-    'Insurance',
-    'Manufacturing',
-    'Mining and Metals',
-    'Oil and Gas',
-    'Power and Energy',
-    'Real Estate',
-    'Retail',
-    'Telecommunications',
-    'Textiles and Apparel',
-    'Transport and Logistics',
-    'Legal Services',
-    'Aerospace and Defense'
+    // ... your ministries
   ];
 
-  
-  
+  const industries = [
+    // ... your industries
+  ];
+
   const filteredJobs = allJobs.filter(job => {
     return (
       (filterType === 'All' || job.type === filterType) &&
@@ -179,10 +155,23 @@ const Jobpage = () => {
                 <p><strong>Ministry:</strong> {job.ministry}</p>
                 <p><strong>Industry:</strong> {job.industry}</p>
                 <p><strong>Last Date to Apply:</strong> {job.lastDate}</p>
+                <a
+                  href={
+                    officialLinks[job.location]?.[job.category] ||
+                    officialLinks[job.type]?.[job.category] ||
+                    '#'
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="official-link"
+                >
+                  Official Job Notification
+                </a>
               </div>
             ))
           )}
         </div>
+
       </div>
     </div>
   );
