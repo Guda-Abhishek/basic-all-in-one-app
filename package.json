@@ -2,14 +2,18 @@
   "name": "my-app",
   "private": true,
   "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "electron": "electron .",
-    "start": "concurrently \"npm run dev\" \"npm run electron\""
-  },
+"scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "lint": "eslint .",
+  "preview": "vite preview",
+  "electron": "electron .",
+  "start": "concurrently \"npm run dev\" \"npm run electron\"",
+  "android": "npx cap open android",
+  "ios": "npx cap open ios",
+  "sync": "npx cap sync",
+  "build-electron": "vite build && electron-builder"
+},
   "dependencies": {
     "@capacitor/android": "^7.2.0",
     "@capacitor/cli": "^7.2.0",
